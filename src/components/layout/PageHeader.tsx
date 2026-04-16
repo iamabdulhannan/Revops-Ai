@@ -1,0 +1,26 @@
+import { type ReactNode } from "react";
+
+interface PageHeaderProps {
+  title: string;
+  subtitle?: string;
+  children?: ReactNode;
+}
+
+export function PageHeader({ title, subtitle, children }: PageHeaderProps) {
+  return (
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+      {/* Left: Title and subtitle */}
+      <div>
+        <h1 className="text-xl font-bold text-black tracking-tight">{title}</h1>
+        {subtitle && (
+          <p className="mt-1 text-sm text-grey-500">{subtitle}</p>
+        )}
+      </div>
+
+      {/* Right: Action buttons slot */}
+      {children && (
+        <div className="flex items-center gap-3 shrink-0">{children}</div>
+      )}
+    </div>
+  );
+}

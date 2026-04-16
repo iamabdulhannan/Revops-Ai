@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RevOps AI — Revenue Operations Survey 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0f;
+    color: #e2e8f0;
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 20px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(108, 92, 231, 0.2);
+  }
+
+  .header .badge {
+    display: inline-block;
+    background: rgba(108, 92, 231, 0.15);
+    color: #a29bfe;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border: 1px solid rgba(108, 92, 231, 0.3);
+  }
+
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, #a29bfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .header p {
+    font-size: 16px;
+    color: #94a3b8;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .header .time-badge {
+    display: inline-block;
+    background: rgba(0, 206, 201, 0.1);
+    color: #00cec9;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+
+  /* Why Section */
+  .why-section {
+    background: rgba(108, 92, 231, 0.06);
+    border: 1px solid rgba(108, 92, 231, 0.15);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 40px;
+  }
+
+  .why-section h2 {
+    font-size: 20px;
+    color: #a29bfe;
+    margin-bottom: 16px;
+  }
+
+  .why-section p {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 12px;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .why-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .why-card .icon { font-size: 28px; margin-bottom: 8px; }
+  .why-card .title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .why-card .desc { font-size: 11px; color: #64748b; }
+
+  /* Sections */
+  .section {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 28px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .section-num {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .section-subtitle {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  /* Questions */
+  .question {
+    margin-bottom: 28px;
+  }
+
+  .question:last-child { margin-bottom: 0; }
+
+  .q-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .q-label .q-num {
+    color: #6c5ce7;
+    font-weight: 800;
+    margin-right: 8px;
+  }
+
+  .q-label .required {
+    color: #ff6b6b;
+    margin-left: 4px;
+  }
+
+  .q-hint {
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  /* Options */
+  .options { display: flex; flex-direction: column; gap: 8px; }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .option:hover {
+    background: rgba(108, 92, 231, 0.08);
+    border-color: rgba(108, 92, 231, 0.3);
+  }
+
+  .option input[type="radio"],
+  .option input[type="checkbox"] {
+    accent-color: #6c5ce7;
+    width: 16px;
+    height: 16px;
+  }
+
+  .option label {
+    font-size: 13px;
+    color: #cbd5e1;
+    cursor: pointer;
+  }
+
+  /* Text inputs */
+  .text-input,
+  .text-area {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    transition: border-color 0.2s;
+  }
+
+  .text-input:focus,
+  .text-area:focus {
+    outline: none;
+    border-color: #6c5ce7;
+  }
+
+  .text-area { min-height: 80px; resize: vertical; }
+
+  /* Scale */
+  .scale-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  .scale-label { font-size: 11px; color: #64748b; white-space: nowrap; }
+
+  .scale-options {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .scale-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scale-btn:hover {
+    background: rgba(108, 92, 231, 0.15);
+    border-color: #6c5ce7;
+    color: #fff;
+  }
+
+  /* Matrix */
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+
+  .matrix-table th {
+    font-size: 11px;
+    color: #64748b;
+    padding: 8px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .matrix-table td {
+    padding: 10px 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 12px;
+    color: #cbd5e1;
+  }
+
+  .matrix-table td:first-child { font-weight: 500; }
+  .matrix-table td:not(:first-child) { text-align: center; }
+
+  .matrix-table input[type="radio"] { accent-color: #6c5ce7; }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .cta-section h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .cta-section p {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 24px;
+  }
+
+  .early-access-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #00cec9;
+  }
+
+  .submit-btn {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: #fff;
+    border: none;
+    padding: 16px 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 12px;
+    color: #475569;
+  }
+
+  .footer a { color: #6c5ce7; text-decoration: none; }
+
+  /* Purpose tags */
+  .purpose-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .tag-validate { background: rgba(0, 206, 201, 0.1); color: #00cec9; }
+  .tag-pricing { background: rgba(253, 203, 110, 0.1); color: #fdcb6e; }
+  .tag-feature { background: rgba(108, 92, 231, 0.1); color: #a29bfe; }
+  .tag-pipeline { background: rgba(253, 121, 168, 0.1); color: #fd79a8; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 24px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .section { padding: 24px; }
+    .early-access-box { grid-template-columns: 1fr; }
+    .scale-btn { width: 36px; height: 36px; font-size: 12px; }
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: #fff; color: #1a1a2e; }
+    .section { border: 1px solid #e2e8f0; }
+    .header { background: #f8fafc; }
+    .header h1 { -webkit-text-fill-color: #1a1a2e; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="badge">📊 Revenue Operations Research 2026</div>
+    <h1>How Does Your Company Track & Forecast Revenue?</h1>
+    <p>We're researching how B2B companies manage revenue operations across their tools. Your answers will help shape the future of AI-powered revenue intelligence.</p>
+    <div class="time-badge">⏱️ Takes 6-8 minutes · 100% confidential</div>
+  </div>
+
+  <!-- WHY PARTICIPATE -->
+  <div class="why-section">
+    <h2>🎁 What You Get For Participating</h2>
+    <p>This isn't just a survey. Every participant receives real value:</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">📋</div>
+        <div class="title">Free Report</div>
+        <div class="desc">2026 State of Revenue Operations Report with benchmarks from 500+ companies</div>
+      </div>
+      <div class="why-card">
+        <div class="icon">🚀</div>
+        <div class="title">Early Access</div>
+        <div class="desc">Free 6-month access to RevOps AI platform when it launches (worth $2,394)</div>
+      </div>
+      <div class="why-card">
+        <div class="icon">🧠</div>
+        <div class="title">Revenue Audit</div>
+        <div class="desc">Personalized revenue operations health assessment for your company</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- SECTION 1: COMPANY PROFILE -->
+  <!-- =============================== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div>
+        <div class="section-title">Company Profile</div>
+        <div class="section-subtitle">Help us understand your business context</div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q1.</span> What is your company name? <span class="required">*</span></label>
+      <input type="text" class="text-input" placeholder="Company name">
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q2.</span> Your name and role <span class="required">*</span></label>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <input type="text" class="text-input" placeholder="Full name">
+        <input type="text" class="text-input" placeholder="Job title (e.g., VP Sales, CEO, RevOps Manager)">
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q3.</span> Company size (employees) <span class="required">*</span></label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q3" id="q3a"><label for="q3a">1-20 (Startup / Early Stage)</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3b"><label for="q3b">21-50 (Growing)</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3c"><label for="q3c">51-200 (Scale-up)</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3d"><label for="q3d">201-500 (Mid-Market)</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3e"><label for="q3e">501-2000 (Upper Mid-Market)</label></div>
+        <div class="option"><input type="radio" name="q3" id="q3f"><label for="q3f">2000+ (Enterprise)</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q4.</span> Annual revenue range <span class="required">*</span></label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q4" id="q4a"><label for="q4a">Under $500K</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4b"><label for="q4b">$500K - $2M</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4c"><label for="q4c">$2M - $10M</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4d"><label for="q4d">$10M - $50M</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4e"><label for="q4e">$50M - $200M</label></div>
+        <div class="option"><input type="radio" name="q4" id="q4f"><label for="q4f">$200M+</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q5.</span> Business model <span class="required">*</span></label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q5" id="q5a"><label for="q5a">SaaS / Subscription</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5b"><label for="q5b">IT Services / Outsourcing</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5c"><label for="q5c">E-Commerce / Retail</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5d"><label for="q5d">Agency / Consulting</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5e"><label for="q5e">Marketplace / Platform</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5f"><label for="q5f">Hybrid (Product + Services)</label></div>
+        <div class="option"><input type="radio" name="q5" id="q5g"><label for="q5g">Other</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q6.</span> Industry vertical <span class="required">*</span></label>
+      <input type="text" class="text-input" placeholder="e.g., Fintech, Healthcare, EdTech, Marketing, Manufacturing...">
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- SECTION 2: CURRENT TOOL STACK -->
+  <!-- =============================== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div>
+        <div class="section-title">Your Current Revenue Tool Stack</div>
+        <div class="section-subtitle">Understanding what tools you use today</div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q7.</span> Which CRM do you currently use? <span class="required">*</span></label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q7" id="q7a"><label for="q7a">HubSpot</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7b"><label for="q7b">Salesforce</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7c"><label for="q7c">Microsoft Dynamics 365</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7d"><label for="q7d">Zoho CRM</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7e"><label for="q7e">Pipedrive</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7f"><label for="q7f">No CRM (spreadsheets / manual)</label></div>
+        <div class="option"><input type="radio" name="q7" id="q7g"><label for="q7g">Other: <input type="text" class="text-input" style="display:inline; width: 200px; padding: 6px 10px;" placeholder="Specify"></label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q8.</span> What other revenue-related tools do you use? <span class="required">*</span></label>
+      <div class="q-hint">Select all that apply</div>
+      <div class="options">
+        <div class="option"><input type="checkbox" id="q8a"><label for="q8a">Stripe / Payment processor</label></div>
+        <div class="option"><input type="checkbox" id="q8b"><label for="q8b">QuickBooks / Xero (Accounting)</label></div>
+        <div class="option"><input type="checkbox" id="q8c"><label for="q8c">Intercom / Zendesk (Support)</label></div>
+        <div class="option"><input type="checkbox" id="q8d"><label for="q8d">Mixpanel / Amplitude (Analytics)</label></div>
+        <div class="option"><input type="checkbox" id="q8e"><label for="q8e">Slack / Teams (Communication)</label></div>
+        <div class="option"><input type="checkbox" id="q8f"><label for="q8f">Mailchimp / Klaviyo (Email marketing)</label></div>
+        <div class="option"><input type="checkbox" id="q8g"><label for="q8g">Google Analytics / GA4</label></div>
+        <div class="option"><input type="checkbox" id="q8h"><label for="q8h">ChartMogul / Baremetrics (SaaS metrics)</label></div>
+        <div class="option"><input type="checkbox" id="q8i"><label for="q8i">SAP / Oracle / NetSuite (ERP)</label></div>
+        <div class="option"><input type="checkbox" id="q8j"><label for="q8j">Google Sheets / Excel (Manual tracking)</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q9.</span> How many different tools does your team use for revenue-related work?</label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q9" id="q9a"><label for="q9a">1-3 tools</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9b"><label for="q9b">4-7 tools</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9c"><label for="q9c">8-12 tools</label></div>
+        <div class="option"><input type="radio" name="q9" id="q9d"><label for="q9d">13+ tools</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q10.</span> Do your current tools talk to each other?</label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q10" id="q10a"><label for="q10a">Yes, everything is well-integrated</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10b"><label for="q10b">Partially — some tools sync, but there are gaps</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10c"><label for="q10c">Barely — we manually copy data between tools</label></div>
+        <div class="option"><input type="radio" name="q10" id="q10d"><label for="q10d">Not at all — everything is siloed</label></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- SECTION 3: PAIN POINTS -->
+  <!-- =============================== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div>
+        <div class="section-title">Revenue Operations Pain Points</div>
+        <div class="section-subtitle">The challenges you face today — this is the most important section</div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q11.</span> How do you currently calculate/track your company's total revenue (ARR, MRR, etc.)? <span class="required">*</span></label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q11" id="q11a"><label for="q11a">Dedicated tool (ChartMogul, Baremetrics, etc.)</label></div>
+        <div class="option"><input type="radio" name="q11" id="q11b"><label for="q11b">CRM reports (HubSpot, Salesforce built-in)</label></div>
+        <div class="option"><input type="radio" name="q11" id="q11c"><label for="q11c">ERP system (SAP, D365, NetSuite)</label></div>
+        <div class="option"><input type="radio" name="q11" id="q11d"><label for="q11d">Spreadsheets (Google Sheets / Excel)</label></div>
+        <div class="option"><input type="radio" name="q11" id="q11e"><label for="q11e">Finance team does it manually each month</label></div>
+        <div class="option"><input type="radio" name="q11" id="q11f"><label for="q11f">We don't really track it properly (honest answer)</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q12.</span> Rate how painful each of these problems is for your company <span class="required">*</span></label>
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th style="text-align:left; width: 40%;">Problem</th>
+            <th>Not a problem</th>
+            <th>Minor</th>
+            <th>Moderate</th>
+            <th>Painful</th>
+            <th>Critical</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Can't see real-time revenue numbers in one place</td>
+            <td><input type="radio" name="q12a" value="1"></td>
+            <td><input type="radio" name="q12a" value="2"></td>
+            <td><input type="radio" name="q12a" value="3"></td>
+            <td><input type="radio" name="q12a" value="4"></td>
+            <td><input type="radio" name="q12a" value="5"></td>
+          </tr>
+          <tr>
+            <td>Don't know which marketing actually drives revenue</td>
+            <td><input type="radio" name="q12b" value="1"></td>
+            <td><input type="radio" name="q12b" value="2"></td>
+            <td><input type="radio" name="q12b" value="3"></td>
+            <td><input type="radio" name="q12b" value="4"></td>
+            <td><input type="radio" name="q12b" value="5"></td>
+          </tr>
+          <tr>
+            <td>Customers churn and we didn't see it coming</td>
+            <td><input type="radio" name="q12c" value="1"></td>
+            <td><input type="radio" name="q12c" value="2"></td>
+            <td><input type="radio" name="q12c" value="3"></td>
+            <td><input type="radio" name="q12c" value="4"></td>
+            <td><input type="radio" name="q12c" value="5"></td>
+          </tr>
+          <tr>
+            <td>Revenue forecasting is inaccurate / based on gut feeling</td>
+            <td><input type="radio" name="q12d" value="1"></td>
+            <td><input type="radio" name="q12d" value="2"></td>
+            <td><input type="radio" name="q12d" value="3"></td>
+            <td><input type="radio" name="q12d" value="4"></td>
+            <td><input type="radio" name="q12d" value="5"></td>
+          </tr>
+          <tr>
+            <td>Board/investor reporting takes too long</td>
+            <td><input type="radio" name="q12e" value="1"></td>
+            <td><input type="radio" name="q12e" value="2"></td>
+            <td><input type="radio" name="q12e" value="3"></td>
+            <td><input type="radio" name="q12e" value="4"></td>
+            <td><input type="radio" name="q12e" value="5"></td>
+          </tr>
+          <tr>
+            <td>Sales and Marketing teams blame each other</td>
+            <td><input type="radio" name="q12f" value="1"></td>
+            <td><input type="radio" name="q12f" value="2"></td>
+            <td><input type="radio" name="q12f" value="3"></td>
+            <td><input type="radio" name="q12f" value="4"></td>
+            <td><input type="radio" name="q12f" value="5"></td>
+          </tr>
+          <tr>
+            <td>Manually syncing data between tools wastes hours weekly</td>
+            <td><input type="radio" name="q12g" value="1"></td>
+            <td><input type="radio" name="q12g" value="2"></td>
+            <td><input type="radio" name="q12g" value="3"></td>
+            <td><input type="radio" name="q12g" value="4"></td>
+            <td><input type="radio" name="q12g" value="5"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q13.</span> How many hours per week does your team spend manually compiling revenue data/reports?</label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q13" id="q13a"><label for="q13a">Less than 1 hour</label></div>
+        <div class="option"><input type="radio" name="q13" id="q13b"><label for="q13b">1-3 hours</label></div>
+        <div class="option"><input type="radio" name="q13" id="q13c"><label for="q13c">4-8 hours</label></div>
+        <div class="option"><input type="radio" name="q13" id="q13d"><label for="q13d">8-15 hours</label></div>
+        <div class="option"><input type="radio" name="q13" id="q13e"><label for="q13e">15+ hours (it's a full-time job)</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q14.</span> Have you ever lost a customer and later realized it was preventable?</label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q14" id="q14a"><label for="q14a">Yes, it happens regularly — we lose customers we could have saved</label></div>
+        <div class="option"><input type="radio" name="q14" id="q14b"><label for="q14b">Yes, a few times — we saw the signs too late</label></div>
+        <div class="option"><input type="radio" name="q14" id="q14c"><label for="q14c">Maybe — we don't really analyze why customers leave</label></div>
+        <div class="option"><input type="radio" name="q14" id="q14d"><label for="q14d">No — we have a good system for detecting churn risk</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q15.</span> What's your biggest revenue blind spot right now?</label>
+      <textarea class="text-area" placeholder="In your own words — what revenue question can you NOT answer today that you wish you could?"></textarea>
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- SECTION 4: AI & AUTOMATION -->
+  <!-- =============================== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div>
+        <div class="section-title">AI & Automation Readiness</div>
+        <div class="section-subtitle">Understanding your appetite for AI-powered solutions</div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q16.</span> Are you currently using AI in any part of your revenue operations?</label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q16" id="q16a"><label for="q16a">Yes, extensively — AI is core to our revenue process</label></div>
+        <div class="option"><input type="radio" name="q16" id="q16b"><label for="q16b">Yes, but limited — we use ChatGPT/Copilot for some tasks</label></div>
+        <div class="option"><input type="radio" name="q16" id="q16c"><label for="q16c">Exploring — we're interested but haven't implemented yet</label></div>
+        <div class="option"><input type="radio" name="q16" id="q16d"><label for="q16d">No — we haven't used AI for revenue operations</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q17.</span> Which AI-powered capabilities would be MOST valuable to you? <span class="required">*</span></label>
+      <div class="q-hint">Select your top 3</div>
+      <div class="options">
+        <div class="option"><input type="checkbox" id="q17a"><label for="q17a">🔮 Churn prediction — know which customers will leave 30 days early</label></div>
+        <div class="option"><input type="checkbox" id="q17b"><label for="q17b">📊 AI deal scoring — know which deals will actually close</label></div>
+        <div class="option"><input type="checkbox" id="q17c"><label for="q17c">💬 Ask questions in plain English — "Why did churn spike in January?"</label></div>
+        <div class="option"><input type="checkbox" id="q17d"><label for="q17d">📈 Revenue forecasting — AI-powered predictions vs. gut feeling</label></div>
+        <div class="option"><input type="checkbox" id="q17e"><label for="q17e">🎯 Revenue attribution — know which campaigns actually drive money</label></div>
+        <div class="option"><input type="checkbox" id="q17f"><label for="q17f">⚡ Automated playbooks — AI triggers actions when it detects problems</label></div>
+        <div class="option"><input type="checkbox" id="q17g"><label for="q17g">📋 One-click board reports — generated in 30 seconds with live data</label></div>
+        <div class="option"><input type="checkbox" id="q17h"><label for="q17h">💯 Revenue Health Score — one number showing if your business is healthy</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q18.</span> If an AI tool could tell you "You're about to lose 5 customers this month — here's why and what to do about it" — how valuable would that be?</label>
+      <div class="scale-row">
+        <span class="scale-label">Not valuable</span>
+        <div class="scale-options">
+          <button class="scale-btn">1</button>
+          <button class="scale-btn">2</button>
+          <button class="scale-btn">3</button>
+          <button class="scale-btn">4</button>
+          <button class="scale-btn">5</button>
+          <button class="scale-btn">6</button>
+          <button class="scale-btn">7</button>
+          <button class="scale-btn">8</button>
+          <button class="scale-btn">9</button>
+          <button class="scale-btn">10</button>
+        </div>
+        <span class="scale-label">Game-changer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- SECTION 5: BUYING INTENT -->
+  <!-- =============================== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div>
+        <div class="section-title">Budget & Buying Intent</div>
+        <div class="section-subtitle">Understanding your willingness to invest in better revenue operations</div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q19.</span> Have you actively searched for a revenue operations / revenue intelligence tool in the past 12 months?</label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q19" id="q19a"><label for="q19a">Yes — we evaluated tools but didn't buy (too expensive / not right fit)</label></div>
+        <div class="option"><input type="radio" name="q19" id="q19b"><label for="q19b">Yes — we bought something but it's not working well</label></div>
+        <div class="option"><input type="radio" name="q19" id="q19c"><label for="q19c">We've thought about it but haven't actively searched</label></div>
+        <div class="option"><input type="radio" name="q19" id="q19d"><label for="q19d">No — didn't know these tools existed</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q20.</span> What would you realistically pay per month for a platform that unifies all your revenue data, predicts churn, scores deals with AI, and generates board reports automatically?</label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q20" id="q20a"><label for="q20a">$0 — I'd only use a free tool</label></div>
+        <div class="option"><input type="radio" name="q20" id="q20b"><label for="q20b">$49-$149/month</label></div>
+        <div class="option"><input type="radio" name="q20" id="q20c"><label for="q20c">$150-$399/month</label></div>
+        <div class="option"><input type="radio" name="q20" id="q20d"><label for="q20d">$400-$899/month</label></div>
+        <div class="option"><input type="radio" name="q20" id="q20e"><label for="q20e">$900+/month if it truly delivers ROI</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q21.</span> Who in your company would make the buying decision for a tool like this?</label>
+      <div class="options">
+        <div class="option"><input type="checkbox" id="q21a"><label for="q21a">CEO / Founder</label></div>
+        <div class="option"><input type="checkbox" id="q21b"><label for="q21b">VP Sales / CRO</label></div>
+        <div class="option"><input type="checkbox" id="q21c"><label for="q21c">VP Marketing / CMO</label></div>
+        <div class="option"><input type="checkbox" id="q21d"><label for="q21d">CFO / Finance</label></div>
+        <div class="option"><input type="checkbox" id="q21e"><label for="q21e">RevOps / Sales Ops Manager</label></div>
+        <div class="option"><input type="checkbox" id="q21f"><label for="q21f">CTO / IT</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q22.</span> How many people in your company would need access to this type of tool?</label>
+      <div class="options">
+        <div class="option"><input type="radio" name="q22" id="q22a"><label for="q22a">Just 1-2 people (leadership only)</label></div>
+        <div class="option"><input type="radio" name="q22" id="q22b"><label for="q22b">3-5 people (leadership + ops)</label></div>
+        <div class="option"><input type="radio" name="q22" id="q22c"><label for="q22c">6-15 people (full revenue team)</label></div>
+        <div class="option"><input type="radio" name="q22" id="q22d"><label for="q22d">15+ people (whole company needs visibility)</label></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- SECTION 6: OPEN-ENDED GOLD -->
+  <!-- =============================== -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div>
+        <div class="section-title">Final Thoughts</div>
+        <div class="section-subtitle">Your honest answers here are the most valuable part of this survey</div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q23.</span> If you could wave a magic wand and fix ONE thing about how your company tracks and manages revenue, what would it be?</label>
+      <textarea class="text-area" placeholder="Be specific — this helps us build the right thing"></textarea>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q24.</span> What would make you say "I NEED to try this tool immediately"?</label>
+      <textarea class="text-area" placeholder="What feature, result, or promise would make you sign up today?"></textarea>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q25.</span> Would you be open to a 15-minute call to discuss your revenue operations challenges?</label>
+      <div class="q-hint">We'll share personalized insights from your survey + early platform access</div>
+      <div class="options">
+        <div class="option"><input type="radio" name="q25" id="q25a"><label for="q25a">Yes — I'd love to chat (please provide email below)</label></div>
+        <div class="option"><input type="radio" name="q25" id="q25b"><label for="q25b">Maybe later — send me the report first</label></div>
+        <div class="option"><input type="radio" name="q25" id="q25c"><label for="q25c">No thanks — just send me the free report</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label class="q-label"><span class="q-num">Q26.</span> Your email address <span class="required">*</span></label>
+      <div class="q-hint">For the free report + early access. We never spam.</div>
+      <input type="email" class="text-input" placeholder="your@email.com">
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>🎁 Submit & Unlock Your Rewards</h2>
+    <p>Thank you for investing your time. Here's what happens next:</p>
+    <div class="early-access-box">
+      <div class="benefit-item">✅ Free State of RevOps 2026 Report</div>
+      <div class="benefit-item">✅ 6-month free RevOps AI access</div>
+      <div class="benefit-item">✅ Personalized revenue audit</div>
+      <div class="benefit-item">✅ Priority feature requests</div>
+    </div>
+    <button class="submit-btn">Submit Survey & Claim Free Access →</button>
+    <p style="margin-top: 16px; font-size: 12px; color: #475569;">Your responses are 100% confidential. Individual data is never shared. Only aggregated insights appear in the report.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>© 2026 RevOps AI by <a href="#">Orbiqon</a>. All rights reserved.</p>
+    <p style="margin-top: 8px;">Questions? Reach out at <a href="mailto:hello@revopsai.com">hello@revopsai.com</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>

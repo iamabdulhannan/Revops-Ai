@@ -1,0 +1,10 @@
+export { HeroSection } from "./HeroSection";
+export { HowItWorks } from "./HowItWorks";
+export { FeatureGrid } from "./FeatureGrid";
+export { PlatformCapabilities } from "./PlatformCapabilities";
+export { AppEcosystem } from "./AppEcosystem";
+export { WhoItsFor } from "./WhoItsFor";
+export { SocialProof } from "./SocialProof";
+export { IntegrationLogos } from "./IntegrationLogos";
+export { PricingTable } from "./PricingTable";
+export { CTASection } from "./CTASection";

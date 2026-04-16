@@ -1,0 +1,47 @@
+/* Override React Flow controls to match Baxter monochrome design */
+.react-flow-controls-baxter {
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  border: 1px solid #e3e3e3;
+  overflow: hidden;
+}
+
+.react-flow-controls-baxter button {
+  background: #ffffff;
+  border: none;
+  border-bottom: 1px solid #f2f2f2;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-flow-controls-baxter button:hover {
+  background: #f8f8f8;
+}
+
+.react-flow-controls-baxter button:last-child {
+  border-bottom: none;
+}
+
+.react-flow-controls-baxter button svg {
+  fill: #4c4a45;
+  max-width: 14px;
+  max-height: 14px;
+}
+
+/* Ensure edges don't get default blue selection highlight */
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #e3e3e3;
+}
+
+/* Handle styling -- make them invisible */
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border: none;
+  opacity: 0;
+}
