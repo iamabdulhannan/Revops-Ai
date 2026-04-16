@@ -7,6 +7,7 @@ import { ComplianceReportCard } from "@/components/features/compliance/Complianc
 import { ReportGenerateModal } from "@/components/features/compliance/ReportGenerateModal";
 import { complianceReports } from "@/data/compliance-data";
 import type { ComplianceReport } from "@/types";
+import type { ReportConfig } from "@/components/features/compliance/ReportGenerateModal";
 
 export default function ComplianceReportsPage() {
   const [reports, setReports] = useState<ComplianceReport[]>(complianceReports);
@@ -40,11 +41,11 @@ export default function ComplianceReportsPage() {
     console.log("Download report:", reportId);
   }
 
-  function handleNewReport(config: { framework: string; type: string }) {
+  function handleNewReport(config: ReportConfig) {
     const newReport: ComplianceReport = {
       id: "rpt-" + Date.now(),
       name: `Custom ${config.framework} Report`,
-      type: config.type as ComplianceReport["type"],
+      type: "regulatory",
       framework: config.framework,
       lastGenerated: null,
       status: "not-generated",
